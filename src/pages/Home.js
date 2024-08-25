@@ -34,7 +34,7 @@ function Home() {
   ], []);
 
   useEffect(() => {
-    fetch('taladrod-cars.json')
+    fetch('/Car_Market_Analytics/taladrod-cars.json')
       .then(response => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -95,6 +95,10 @@ function Home() {
     return <div>Loading...</div>;
   }
 
+  if (!carModelsData || !carCompaniesData) {
+    return <div>No data available</div>;
+  }
+
   return (
     <div style={styles.container}>
       <h1 style={styles.title}>Welcome To Car Market Thailand</h1>
@@ -135,96 +139,86 @@ function Home() {
           ))}
         </div>
         <div style={styles.chartContainer}>
-          {carModelsData ? (
-            <Bar
-              data={{
-                ...carModelsData,
-                datasets: carModelsData.datasets.map((dataset) => ({
-                  ...dataset,
-                  backgroundColor: carModelsData.labels.map((_, index) =>
-                    hiddenModels[index] ? 'rgba(0, 0, 0, 0)' : modelColors[index % modelColors.length]
-                  ),
-                  data: carModelsData.datasets[0].data.map((value, index) =>
-                    hiddenModels[index] ? 0 : value
-                  ),
-                })),
-              }}
-              options={{
-                plugins: {
-                  legend: {
-                    display: false, // Hide the default legend
+          <Bar
+            data={{
+              ...carModelsData,
+              datasets: carModelsData.datasets.map((dataset) => ({
+                ...dataset,
+                backgroundColor: carModelsData.labels.map((_, index) =>
+                  hiddenModels[index] ? 'rgba(0, 0, 0, 0)' : modelColors[index % modelColors.length]
+                ),
+                data: carModelsData.datasets[0].data.map((value, index) =>
+                  hiddenModels[index] ? 0 : value
+                ),
+              })),
+            }}
+            options={{
+              plugins: {
+                legend: {
+                  display: false, // Hide the default legend
+                },
+              },
+              scales: {
+                x: {
+                  stacked: true,
+                  title: {
+                    display: true,
+                    text: 'Car Models',
+                    color: '#ffffff',
+                  },
+                  ticks: {
+                    color: '#ffffff',
                   },
                 },
-                scales: {
-                  x: {
-                    stacked: true,
-                    title: {
-                      display: true,
-                      text: 'Car Models',
-                      color: '#ffffff',
-                    },
-                    ticks: {
-                      color: '#ffffff',
-                    },
+                y: {
+                  stacked: true,
+                  title: {
+                    display: true,
+                    text: 'Number of Cars',
+                    color: '#ffffff',
                   },
-                  y: {
-                    stacked: true,
-                    title: {
-                      display: true,
-                      text: 'Number of Cars',
-                      color: '#ffffff',
-                    },
-                    ticks: {
-                      color: '#ffffff',
-                    },
+                  ticks: {
+                    color: '#ffffff',
                   },
                 },
-              }}
-            />
-          ) : (
-            <div>No data available for models</div>
-          )}
+              },
+            }}
+          />
         </div>
       </div>
 
       <div style={styles.card}>
         <h2 style={styles.cardTitle}>Cars by Company</h2>
         <div style={styles.doughnutContainer}>
-          {carCompaniesData ? (
-            <>
-              <Doughnut
-                data={carCompaniesData}
-                options={{
-                  plugins: {
-                    legend: {
-                      display: true,
-                      labels: {
-                        color: '#ffffff',
-                      },
-                    },
+          <Doughnut
+            data={carCompaniesData}
+            options={{
+              plugins: {
+                legend: {
+                  display: true,
+                  labels: {
+                    color: '#ffffff',
                   },
-                }}
-              />
-              <table style={styles.table}>
-                <thead>
-                  <tr>
-                    <th style={styles.tableHeader}>Company</th>
-                    <th style={styles.tableHeader}>Number of Cars</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {carCompaniesTableData && Object.entries(carCompaniesTableData).map(([company, count]) => (
-                    <tr key={company}>
-                      <td style={styles.tableCell}>{company}</td>
-                      <td style={styles.tableCell}>{count}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </>
-          ) : (
-            <div>No data available for companies</div>
-          )}
+                },
+              },
+            }}
+          />
+          <table style={styles.table}>
+            <thead>
+              <tr>
+                <th style={styles.tableHeader}>Company</th>
+                <th style={styles.tableHeader}>Number of Cars</th>
+              </tr>
+            </thead>
+            <tbody>
+              {carCompaniesTableData && Object.entries(carCompaniesTableData).map(([company, count]) => (
+                <tr key={company}>
+                  <td style={styles.tableCell}>{company}</td>
+                  <td style={styles.tableCell}>{count}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

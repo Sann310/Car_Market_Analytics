@@ -1,4 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+  ArcElement,
+} from 'chart.js';
+import { Bar, Doughnut } from 'react-chartjs-2';
+import { Link } from 'react-router-dom';
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+  ArcElement
+);
 
 function Dashboard() {
   const [cars, setCars] = useState([]);
@@ -7,12 +29,12 @@ function Dashboard() {
   const [filteredCars, setFilteredCars] = useState([]);
 
   useEffect(() => {
-    fetch('/taladrod-cars.json')
+    fetch('/Car_Market_Analytics/taladrod-cars.json')
       .then(response => response.json())
       .then(data => {
         if (data && Array.isArray(data.Cars)) {
           setCars(data.Cars);
-          setFilteredCars(data.Cars);
+          setFilteredCars(data.Cars); // Initially display all cars
         } else {
           console.error('Unexpected data structure:', data);
         }
@@ -27,7 +49,7 @@ function Dashboard() {
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
-    const filtered = cars.filter(car => 
+    const filtered = cars.filter(car =>
       car.NameMMT.toLowerCase().includes(e.target.value.toLowerCase())
     );
     setFilteredCars(filtered);
