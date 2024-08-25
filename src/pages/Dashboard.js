@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -9,8 +9,7 @@ import {
   Legend,
   ArcElement,
 } from 'chart.js';
-import { Bar, Doughnut } from 'react-chartjs-2';
-import { Link } from 'react-router-dom';
+
 
 ChartJS.register(
   CategoryScale,
