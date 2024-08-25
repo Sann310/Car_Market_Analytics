@@ -152,7 +152,7 @@ function Home() {
               options={{
                 plugins: {
                   legend: {
-                    display: false, // Hide the default legend
+                    display: false, 
                   },
                 },
                 scales: {

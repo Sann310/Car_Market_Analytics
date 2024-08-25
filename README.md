@@ -1,75 +1,42 @@
-<<<<<<< HEAD
-# Getting Started with Create React App
+This project was build by 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+1.San Nyunt Aung 
+  u6531336 
+  Computer Science
 
-## Available Scripts
 
-In the project directory, you can run:
+2.Sai Naing Yi Tun
+  u6540191
+  Computer Science
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Car Market Analytics
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Car Market Analytics is a comprehensive web application designed to provide users with detailed insights into the car market in Thailand. This platform allows users to explore various car models and brands through interactive visualizations, helping them make informed decisions when purchasing a vehicle.
 
-### `npm test`
+Key Features:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+	•	Interactive Dashboard:
+	•	Cars by Model: Explore the distribution of cars across different models with a vibrant bar chart. Users can toggle the visibility of specific models to focus on the ones that matter most to them.
+	•	Cars by Company: A colorful doughnut chart that displays the share of different car companies in the market, offering a quick overview of the most popular brands.
+	•	Search and Highlight:
+	•	Find Your Cars: A search functionality that allows users to filter cars based on criteria such as year, province, and price range. Users can also highlight cars of interest for easy comparison.
+	•	Highlighted Cars: A section where users can view and manage the cars they have highlighted, making it simple to keep track of potential purchases.
+	•	Responsive Design: The application is designed to work seamlessly across different devices, ensuring a smooth user experience whether you’re on a desktop or mobile device.
+	•	Easy Navigation: Simple and intuitive navigation with a home page, dashboard, and about us section to provide users with all the necessary information about the car market in Thailand.
 
-### `npm run build`
+This is our home page which you will see as soon as enter the link . At this page you can see charts for cars with 
+"Cars by Models" and "Cars by Brand"
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![Homepage Screenshot](./public/screenshot/home1.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![Homepage Screenshot](./public/screenshot/home2.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+This is the Dashboard Section where you can find your cars with search bar and yu can see not only highlighted cars but also all car models we have.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+![DashboaRD Screenshot](./public/screenshot/dashboard.png)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+This is the about us page.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-=======
-# Car_Market_Analytics
-Project 01: Car Market Analytics Web App by me. I made this project individually and i put all my effort as much as I can in this project. Although there maybe some needs and some faults in it hope arjna will like my web app! Thank You!
->>>>>>> 25e4dd2252ba621a52638f0bf9e42635db704a1f
+![About US Screenshot](./public/screenshot/aboutus.png)

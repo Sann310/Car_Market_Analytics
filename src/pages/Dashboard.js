@@ -33,7 +33,7 @@ function Dashboard() {
       .then(data => {
         if (data && Array.isArray(data.Cars)) {
           setCars(data.Cars);
-          setFilteredCars(data.Cars); // Initially display all cars
+          setFilteredCars(data.Cars); 
         } else {
           console.error('Unexpected data structure:', data);
         }
