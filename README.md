@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,3 +69,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+=======
+# Car_Market_Analytics
+Project 01: Car Market Analytics Web App by me. I made this project individually and i put all my effort as much as I can in this project. Although there maybe some needs and some faults in it hope arjna will like my web app! Thank You!
+>>>>>>> 25e4dd2252ba621a52638f0bf9e42635db704a1f

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -27,6 +27,11 @@ function Home() {
   const [carCompaniesData, setCarCompaniesData] = useState(null);
   const [carCompaniesTableData, setCarCompaniesTableData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [hiddenModels, setHiddenModels] = useState({});
+
+  const modelColors = useMemo(() => [
+    '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'
+  ], []);
 
   useEffect(() => {
     fetch('taladrod-cars.json')
@@ -48,27 +53,21 @@ function Home() {
             companiesCount[company] = (companiesCount[company] || 0) + 1;
           });
 
-          const modelColors = Object.keys(modelsCount).map((_, index) =>
-            ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'][index % 6]
-          );
-
           setCarModelsData({
             labels: Object.keys(modelsCount),
-            datasets: Object.keys(modelsCount).map((model, index) => ({
-              label: model,
-              data: new Array(Object.keys(modelsCount).length).fill(0).map((_, i) => (i === index ? modelsCount[model] : 0)),
-              backgroundColor: modelColors[index],
-            })),
+            datasets: [{
+              label: 'Number of Cars',
+              data: Object.values(modelsCount),
+              backgroundColor: Object.keys(modelsCount).map((_, index) => modelColors[index % modelColors.length]),
+            }],
           });
 
           setCarCompaniesData({
             labels: Object.keys(companiesCount),
-            datasets: [
-              {
-                data: Object.values(companiesCount),
-                backgroundColor: modelColors,
-              },
-            ],
+            datasets: [{
+              data: Object.values(companiesCount),
+              backgroundColor: Object.keys(companiesCount).map((_, index) => modelColors[index % modelColors.length]),
+            }],
           });
 
           setCarCompaniesTableData(companiesCount);
@@ -83,7 +82,14 @@ function Home() {
         console.error('Error loading car data:', error);
         setLoading(false);
       });
-  }, []);
+  }, [modelColors]);
+
+  const toggleModelVisibility = (modelIndex) => {
+    setHiddenModels((prevState) => ({
+      ...prevState,
+      [modelIndex]: !prevState[modelIndex]
+    }));
+  };
 
   if (loading) {
     return <div>Loading...</div>;
@@ -103,17 +109,50 @@ function Home() {
 
       <div style={styles.card}>
         <h2 style={styles.cardTitle}>Cars by Model</h2>
+        <div style={styles.customLegend}>
+          {carModelsData.labels.map((model, index) => (
+            <div
+              key={model}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                marginBottom: '5px',
+                cursor: 'pointer',
+                opacity: hiddenModels[index] ? 0.5 : 1,
+              }}
+              onClick={() => toggleModelVisibility(index)}
+            >
+              <div
+                style={{
+                  width: '15px',
+                  height: '15px',
+                  backgroundColor: modelColors[index % modelColors.length],
+                  marginRight: '5px',
+                }}
+              ></div>
+              <span>{model}</span>
+            </div>
+          ))}
+        </div>
         <div style={styles.chartContainer}>
           {carModelsData ? (
-            <Bar 
-              data={carModelsData} 
+            <Bar
+              data={{
+                ...carModelsData,
+                datasets: carModelsData.datasets.map((dataset) => ({
+                  ...dataset,
+                  backgroundColor: carModelsData.labels.map((_, index) =>
+                    hiddenModels[index] ? 'rgba(0, 0, 0, 0)' : modelColors[index % modelColors.length]
+                  ),
+                  data: carModelsData.datasets[0].data.map((value, index) =>
+                    hiddenModels[index] ? 0 : value
+                  ),
+                })),
+              }}
               options={{
                 plugins: {
                   legend: {
-                    display: true,
-                    labels: {
-                      color: '#ffffff',
-                    },
+                    display: false, // Hide the default legend
                   },
                 },
                 scales: {
@@ -140,7 +179,7 @@ function Home() {
                     },
                   },
                 },
-              }} 
+              }}
             />
           ) : (
             <div>No data available for models</div>
@@ -153,7 +192,7 @@ function Home() {
         <div style={styles.doughnutContainer}>
           {carCompaniesData ? (
             <>
-              <Doughnut 
+              <Doughnut
                 data={carCompaniesData}
                 options={{
                   plugins: {
@@ -264,6 +303,12 @@ const styles = {
     borderBottom: '1px solid #ddd',
     padding: '10px',
     color: '#ffffff',
+  },
+  customLegend: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    marginBottom: '20px',
   },
 };
 
