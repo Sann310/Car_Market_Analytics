@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Car_Market_Analytics/static/css/main.e6c13ad2.css",
-    "main.js": "/Car_Market_Analytics/static/js/main.020d8400.js",
+    "main.js": "/Car_Market_Analytics/static/js/main.b4bf094d.js",
     "static/js/453.59fd3802.chunk.js": "/Car_Market_Analytics/static/js/453.59fd3802.chunk.js",
     "index.html": "/Car_Market_Analytics/index.html",
     "main.e6c13ad2.css.map": "/Car_Market_Analytics/static/css/main.e6c13ad2.css.map",
-    "main.020d8400.js.map": "/Car_Market_Analytics/static/js/main.020d8400.js.map",
+    "main.b4bf094d.js.map": "/Car_Market_Analytics/static/js/main.b4bf094d.js.map",
     "453.59fd3802.chunk.js.map": "/Car_Market_Analytics/static/js/453.59fd3802.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.020d8400.js"
+    "static/js/main.b4bf094d.js"
   ]
 }
