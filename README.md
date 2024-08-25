@@ -28,15 +28,16 @@ Key Features:
 This is our home page which you will see as soon as enter the link . At this page you can see charts for cars with 
 "Cars by Models" and "Cars by Brand"
 
-![Homepage Screenshot](./public/screenshot/home1.png)
-
-![Homepage Screenshot](./public/screenshot/home2.png)
-
+!![Homepage Screenshot](public/screenshots/home1.png)
+![Homepage Screenshot](public/screenshots/home2.png)
+!
 
 This is the Dashboard Section where you can find your cars with search bar and yu can see not only highlighted cars but also all car models we have.
 
-![DashboaRD Screenshot](./public/screenshot/dashboard.png)
+
+![Dashboard Screenshot](public/screenshots/dashboard.png)
 
 This is the about us page.
 
-![About US Screenshot](./public/screenshot/aboutus.png)
+
+![About Us Screenshot](public/screenshots/aboutus.png)
